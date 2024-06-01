@@ -1,6 +1,8 @@
+{% load wagtail_tags %}
+
 <nav class="navbar fixed-top navbar-expand-sm bg-primary" data-bs-theme="dark">
   <div class="container">
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" href="{% get_home_page %}">
       Diams Web
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup", aria-controls="#navbarNavAltMarkup", aria-expanded="false", aria-label="Toggle navigation">
@@ -10,7 +12,7 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
         {% for category, item in navigation_categories.items %}
-        <a class="nav-link" href="#{{ category }}">{{ item.0 }}</a>
+        <a class="nav-link" href="{% get_home_page %}#{{ category }}">{{ item.0 }}</a>
         {% endfor %}
       </div>
     </div>
