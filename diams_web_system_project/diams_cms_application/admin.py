@@ -1,3 +1,5 @@
 from django.contrib import admin
 
-# Register your models here.
+from diams_cms_application.models.categories import Category
+
+admin.site.register(Category)
