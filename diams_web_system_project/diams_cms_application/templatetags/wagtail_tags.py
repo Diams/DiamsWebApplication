@@ -1,5 +1,4 @@
 from django import template
-from wagtail.models import Page
 from wagtail.query import PageQuerySet
 
 from home.models import HomePage
