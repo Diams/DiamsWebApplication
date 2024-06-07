@@ -7,6 +7,7 @@ from wagtail import urls as wagtail_urls
 from wagtail.documents import urls as wagtaildocs_urls
 
 from search import views as search_views
+from diams_cms_application.views import a_content_view
 from diams_cms_application.views import portal_page_view
 from diams_cms_application.views import top_page_view
 
@@ -17,6 +18,8 @@ urlpatterns = [
     path("search/", search_views.search, name="search"),
     path("<slug:category>/<slug:pagename>/",
          portal_page_view, name="portal_page_view"),
+    path("<slug:category>/<slug:portal_name>/<slug:pagename>/",
+         a_content_view, name="portal_page_view"),
     path("<slug:slug>/", top_page_view, name="top_page_view"),
 ]
 

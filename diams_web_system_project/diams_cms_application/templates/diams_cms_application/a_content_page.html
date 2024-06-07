@@ -26,24 +26,6 @@
     <p>{{ page.description }}</p>
   </div>
 </div>
-<div class="container mt-2">
-  <div class="row">
-    {% for child in child_pages %}
-    <div class="col-md-4 px-1 py-4">
-      <div class="card">
-        <div class="card-body">
-          <h2 class="card-title">{{ child.title }}</h2>
-          <p class="card-text ">
-            <a href="/{{ page.category.identify }}{{ child.url }}" style="text-decoration:none;" class="text-dark stretched-link">
-              {{ child.description }}
-            </a>
-          </p>
-        </div>
-      </div>
-    </div>
-    {% endfor %}
-  </div>
-</div>
 {% endblock main %}
 
 {% block footer %}
