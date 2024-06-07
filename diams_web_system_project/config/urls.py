@@ -11,13 +11,13 @@ from diams_cms_application.views import portal_page_view
 from diams_cms_application.views import top_page_view
 
 urlpatterns = [
-    path("<slug:category>/<slug:pagename>/",
-         portal_page_view, name="portal_page_view"),
-    path("<slug:slug>/", top_page_view, name="top_page_view"),
     path("django-admin/", admin.site.urls),
     path("admin/", include(wagtailadmin_urls)),
     path("documents/", include(wagtaildocs_urls)),
     path("search/", search_views.search, name="search"),
+    path("<slug:category>/<slug:pagename>/",
+         portal_page_view, name="portal_page_view"),
+    path("<slug:slug>/", top_page_view, name="top_page_view"),
 ]
 
 
