@@ -1,0 +1,12 @@
+th {
+  cursor: default;
+  user-select: none;
+}
+
+.htRight {
+  text-align: right;
+}
+
+.htCenter {
+  text-align: center;
+}

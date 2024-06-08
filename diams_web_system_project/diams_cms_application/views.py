@@ -15,7 +15,7 @@ def a_content_view(request, category, portal_name, pagename):
     parent_page = get_object_or_404(PortalPage, slug=portal_name,
                                     category__identify=category)
     page = get_object_or_404(AContentPage, slug=pagename,
-                             path__startswith=parent_page.path)
+                             path__startswith=parent_page.path).specific
     return page.serve(request)
 
 
