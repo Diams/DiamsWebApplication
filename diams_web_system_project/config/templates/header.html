@@ -1,0 +1,33 @@
+{% load wagtail_tags %}
+
+<nav class="navbar fixed-top navbar-expand-sm bg-primary" data-bs-theme="dark">
+  <div class="container">
+    <a class="navbar-brand" href="{% get_home_page %}">
+      Diams Web
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup", aria-controls="#navbarNavAltMarkup", aria-expanded="false", aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon">
+      </span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <ul class="navbar-nav">
+        {% for category, item in navigation_categories.items %}
+          {% if item.1 %}
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="{% get_home_page %}#{{ category }}" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{ item.0 }}</a>
+            <ul class="dropdown-menu">
+              {% for child_page in item.1 %}
+              <a class="dropdown-item" href="/{{ category }}/{{ child_page.slug }}/">{{ child_page.title }}</a>
+              {% endfor %}
+            </ul>
+          </li>
+          {% else %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% get_home_page %}#{{ category }}">{{ item.0 }}</a>
+          </li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</nav>

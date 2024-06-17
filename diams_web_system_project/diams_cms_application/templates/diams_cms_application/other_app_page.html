@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load static %}
+{% load django_bootstrap5 %}
+
+{% block body_class %}template-homepage{% endblock %}
+
+{% block extra_css %}
+{% bootstrap_css %}
+{% endblock extra_css %}
+
+{% block extra_js %}
+{% bootstrap_javascript %}
+<script type="text/javascript" src="{% static 'js/header.js' %}"></script>
+{% endblock extra_js %}
+
+{% block content %}
+
+{% block header %}
+{% include "header.html" %}
+{% endblock header %}
+
+{% block main %}
+<div class="bg-body-tertiary">
+  <div class="container py-5">
+    <h1>{{ page.title }}</h1>
+    <p>{{ page.description }}</p>
+  </div>
+</div>
+{{ contents }}
+{% endblock main %}
+
+{% block footer %}
+{% include "footer.html" %}
+{% endblock footer %}
+
+{% endblock content %}

@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags %}
+{% load static %}
+{% load django_bootstrap5 %}
+
+{% block body_class %}template-homepage{% endblock %}
+
+{% block extra_css %}
+{% bootstrap_css %}
+<link rel="stylesheet" type="text/css" href="{% static 'diams_cms_application/css/table.css' %}"></link>
+{% endblock extra_css %}
+
+{% block extra_js %}
+{% bootstrap_javascript %}
+<script type="text/javascript" src="{% static 'js/header.js' %}"></script>
+<script type="text/javascript" src="{% static 'diams_cms_application/js/sort_table.js' %}"></script>
+{% endblock extra_js %}
+
+{% block content %}
+
+{% block header %}
+{% include "header.html" %}
+{% endblock header %}
+
+{% block main %}
+<div class="bg-body-tertiary">
+  <div class="container py-5">
+    <h1>{{ page.title }}</h1>
+    <p>{{ page.description }}</p>
+  </div>
+</div>
+<div class="container mt-2">
+  {% for block in page.body %}
+    {% if block.block_type == 'table' %}
+      {% include_block block %}
+    {% endif %}
+  {% endfor %}
+</div>
+{% endblock main %}
+
+{% block footer %}
+{% include "footer.html" %}
+{% endblock footer %}
+
+{% endblock content %}

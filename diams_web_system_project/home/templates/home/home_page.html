@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% load static %}
+{% load django_bootstrap5 %}
+
+{% block body_class %}template-homepage{% endblock %}
+
+{% block extra_css %}
+{% bootstrap_css %}
+{% endblock extra_css %}
+
+{% block extra_js %}
+{% bootstrap_javascript %}
+<script type="text/javascript" src="{% static 'js/header.js' %}"></script>
+{% endblock extra_js %}
+
+{% block content %}
+
+{% block header %}
+{% include "header.html" %}
+{% endblock header %}
+
+{% block main %}
+<div class="bg-body-tertiary">
+  <div class="container py-5">
+    <h1>Diams Webへようこそ！</h1>
+  </div>
+</div>
+<div class="container mt-2">
+  {% for category, item in navigation_categories.items %}
+  <div class="row my-2">
+    <div class="col-md-12 text-bg-info">
+      <h2 class="p-1" id="{{ category }}">{{ item.0 }}</h2>
+    </div>
+  </div>
+  <div class="row my-2">
+    {% for page in item.1 %}
+    <div class="col-md-4">
+      <h3>{{ page.title }}</h3>
+      <p>{{ page.description }}</p>
+      <p><a class="btn btn-secondary" href="/{{ category }}/{{ page.slug }}/" role="button">Enter &raquo;</a></p>
+    </div>
+    {% empty %}
+    <div class="col-md-12">
+      <h3>No Contents</h3>
+    </div>
+    {% endfor %}
+  </div>
+  {% endfor %}
+</div>
+{% endblock main %}
+
+{% block footer %}
+{% include "footer.html" %}
+{% endblock footer %}
+
+{% endblock content %}
